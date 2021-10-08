@@ -30,6 +30,8 @@ var cubemap;
 var renderer;
 var angleX = -25;
 var angleY = -200.5;
+var offsetX = 0; // canvas offsetX compensation
+var offsetY = 0; // canvas offsetY compensation
 
 // Sphere physics info
 var useSpherePhysics = false;
@@ -185,12 +187,12 @@ window.onload = function() {
   document.onmousedown = function(e) {
     if (!isHelpElement(e.target)) {
       e.preventDefault();
-      startDrag(e.pageX, e.pageY);
+      startDrag(e.pageX - offsetX, e.pageY - offsetY);
     }
   };
 
   document.onmousemove = function(e) {
-    duringDrag(e.pageX, e.pageY);
+    duringDrag(e.pageX - offsetX, e.pageY - offsetY);
   };
 
   document.onmouseup = function() {
